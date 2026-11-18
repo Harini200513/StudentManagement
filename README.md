@@ -116,23 +116,7 @@ The application uses a local SQLite database named `students.db`. The `students`
 
 The table is created automatically when `main.py` starts.
 
-## Screenshots
-
-Add screenshots or a short demo video of the application here:
-
-- Home page
-- Add student page
-- Student details page
-- Edit student page
-
 ## Learning Outcome
 
 Although this is a basic project, it helped me understand and practically implement FastAPI fundamentals. Building it provided hands-on experience in using routing, form handling, Pydantic models, Jinja2 templates, SQLite database operations, and CRUD functionality together in a real application.
 
-## Acknowledgements
-
-Special thanks to my mentor **Saibalaji**, **Innomatics Research Labs**, and **Full Stack Experts Academy** for their guidance and support.
-
-## Tags
-
-#FullStack #FastAPI #Python #Projects #WebDevelopment #LearningByDoing
