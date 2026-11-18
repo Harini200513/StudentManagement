@@ -1,0 +1,260 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Management</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #e0f2fe, #eff6ff);
+            min-height: 100vh;
+            padding: 35px;
+        }
+
+        /* Header */
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            color: #1e3a5f;
+            font-size: 30px;
+        }
+
+        .subtitle {
+            color: #64748b;
+            margin-top: 8px;
+            font-size: 15px;
+        }
+
+        /* Add Button */
+
+        .add-btn {
+            display: inline-block;
+            background: #4f46e5;
+            color: white;
+            text-decoration: none;
+            padding: 12px 22px;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .add-btn:hover {
+            background: #3730a3;
+            transform: translateY(-2px);
+        }
+
+        /* Student Container */
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 25px;
+        }
+
+        /* Student Card */
+
+        .card {
+            background: white;
+            border-radius: 14px;
+            padding: 18px;
+            border: 1px solid #dbeafe;
+            box-shadow: 0 4px 15px rgba(30, 64, 175, 0.08);
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 10px 25px rgba(30, 64, 175, 0.15);
+        }
+
+        /* Student Image */
+
+        .card img {
+            width: 100%;
+            height: 190px;
+            object-fit: contain;
+            object-position: center;
+            display: block;
+            background: #f1f5f9;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        /* Student Details */
+
+        .card h2 {
+            color: #1e3a5f;
+            font-size: 21px;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            color: #475569;
+            font-size: 15px;
+            margin-bottom: 11px;
+        }
+
+        .card p b {
+            color: #1e293b;
+        }
+
+        /* Action Buttons */
+
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 18px;
+        }
+
+        .view-btn,
+        .update-btn,
+        .delete-btn {
+            display: inline-block;
+            padding: 9px 13px;
+            border: none;
+            border-radius: 7px;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .view-btn {
+            background: #dbeafe;
+            color: #1d4ed8;
+        }
+
+        .view-btn:hover {
+            background: #2563eb;
+            color: white;
+        }
+
+        .update-btn {
+            background: #dcfce7;
+            color: #15803d;
+        }
+
+        .update-btn:hover {
+            background: #16a34a;
+            color: white;
+        }
+
+        .delete-btn {
+            background: #fee2e2;
+            color: #dc2626;
+        }
+
+        .delete-btn:hover {
+            background: #dc2626;
+            color: white;
+        }
+
+        /* Mobile Responsive */
+
+        @media (max-width: 600px) {
+            body {
+                padding: 18px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            .header {
+                align-items: flex-start;
+            }
+
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+
+    <div class="header">
+
+        <div>
+            <h1>Student Management</h1>
+            <p class="subtitle">Manage and view all student information</p>
+        </div>
+
+        <a href="/student/add" class="add-btn">+ Add Student</a>
+
+    </div>
+
+
+    <!-- Student Cards -->
+
+    <div class="container">
+
+        {% for std in stds %}
+
+        <div class="card">
+
+            <img src="{{std[6]}}" alt="Student Image">
+
+            <h2>{{std[1]}}</h2>
+
+            <p><b>Age:</b> {{std[2]}}</p>
+
+            <p><b>Gender:</b> {{std[3]}}</p>
+
+            <p><b>Marks:</b> {{std[4]}}</p>
+
+            <p><b>Course:</b> {{std[5]}}</p>
+
+
+            <!-- Action Buttons -->
+
+            <div class="actions">
+
+                <a href="/students/{{std[0]}}" class="view-btn">
+                    View Details
+                </a>
+
+                <a href="/students/edit/{{std[0]}}" class="update-btn">
+                    Update
+                </a>
+
+                <form action="/std/delete/{{std[0]}}" method="POST">
+
+                    <button type="submit" class="delete-btn">
+                        Delete
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</body>
+</html>

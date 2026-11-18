@@ -1,0 +1,124 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Details</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color:#e3f2fd;
+            padding: 30px;
+        }
+
+        h1 {
+            color: #253858;
+            margin-bottom: 25px;
+        }
+
+        .card {
+            width: 350px;
+            background-color: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
+
+        .card img {
+            width: 100%;
+            height: 220px;
+            object-fit: contain;
+            object-position: center;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            background-color: #f8fafc;
+        }
+
+        .card h2 {
+            color: #253858;
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            color: #555;
+            font-size: 16px;
+            margin-bottom: 12px;
+        }
+
+        .status {
+            display: inline-block;
+            padding: 8px 18px;
+            border-radius: 6px;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+
+        .present {
+            background-color: #dcfce7;
+            color: #15803d;
+        }
+
+        .absent {
+            background-color: #fee2e2;
+            color: #dc2626;
+        }
+
+        .home-btn {
+            display: inline-block;
+            background-color: #4f46e5;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            margin-top: 15px;
+        }
+
+        .home-btn:hover {
+            background-color: #3730a3;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <h1>Student Details</h1>
+
+    <div class="card">
+
+        <img src="{{std[6]}}" alt="Student Image">
+
+        <h2>{{std[1]}}</h2>
+
+        <p><b>Age:</b> {{std[2]}}</p>
+
+        <p><b>Gender:</b> {{std[3]}}</p>
+
+        <p><b>Marks:</b> {{std[4]}}</p>
+
+        <p><b>Course:</b> {{std[5]}}</p>
+
+        {% if std[7] %}
+            <p class="status present">Present</p>
+        {% else %}
+            <p class="status absent">Absent</p>
+        {% endif %}
+
+        <br>
+
+        <a href="/" class="home-btn">Back to Home</a>
+
+    </div>
+
+</body>
+</html>
